@@ -27,7 +27,7 @@ def plot(pollCount):
 
 
 
-def plotDates(plotValues, pollCount)
+def plotDates(plotValues, pollCount):
 
 	plt.ioff();
 	dataY,dataX  = np.loadtxt(plotValues)
@@ -39,7 +39,7 @@ def plotDates(plotValues, pollCount)
 	if(pollCount > 0):
 		y = dataY[-pollCount:]
 		x = dataX[-pollCount:]
-	else
+	else:
 		y = dataY
 		x = dataX
        	dates = matplotlib.dates.date2num(x)
@@ -48,7 +48,7 @@ def plotDates(plotValues, pollCount)
 	
 
 
-plot(0)
+
 
 #    plt.pause(0.1)
 
