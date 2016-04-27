@@ -18,11 +18,14 @@ def plot(pollCount):
         content = f.readlines()
         for row in content:
             tmpStr = row.split(" ")
-            y.append(float(tmpStr[0]))
             try:
-                xDates.append(tmpStr[1])
+                xDates.append(tmpStr[0])
             except:
                 xDates.append("")
+            try:
+                y.append(float(tmpStr[1]))
+            except:
+                y.append(0)
     x = []
     for i in range(len(xDates)):
 	    x.append(i)

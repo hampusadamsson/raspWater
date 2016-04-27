@@ -19,14 +19,14 @@ while True:
 		s.connect((serverMACAddress,port))
 		s.send('1')
 		f = s.makefile()
-		data = f.readline()
-	
+		data = str(f.readline())
+
 		print data
 		f = open('plotVal','a')
 		sendStr = ""
-		sendStr += str(data)
-		sendStr += " "
 		sendStr += str(strftime("%H:%M", gmtime()))
+		sendStr += " "
+		sendStr += str(data)
 		f.write(sendStr) # python will convert \n to os.linesep
 		f.close() # you can omit in most cases as the destructor will call it
 
@@ -40,7 +40,4 @@ while True:
 		print "Caught exception socket.error : %s" % exc
 
 	time.sleep (10)
-        
-
-
 
