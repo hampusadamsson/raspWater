@@ -2,7 +2,7 @@ import socket
 import time
 import matplotlib
 matplotlib.use('Agg')
-
+from time import gmtime, strftime
 import graph as gr
 
 
@@ -11,7 +11,6 @@ serverMACAddress = '20:14:10:10:21:04'
 port = 1
 #s = socket.socket(socket.AF_BLUETOOTH, socket.SOCK_STREAM, socket.BTPROTO_RFCOMM)
 #s.connect((serverMACAddress,port))
-x = 0
 
 while True:
 	s = socket.socket(socket.AF_BLUETOOTH, socket.SOCK_STREAM, socket.BTPROTO_RFCOMM)
@@ -23,12 +22,19 @@ while True:
 		data = f.readline()
 	
 		print data
-		f = open('plotValues','a')
-		f.write(data) # python will convert \n to os.linesep
+		f = open('plotVal','a')
+		sendStr = ""
+		sendStr += str(data)
+		sendStr += " "
+		sendStr += str(strftime("%H:%M", gmtime()))
+		f.write(sendStr) # python will convert \n to os.linesep
 		f.close() # you can omit in most cases as the destructor will call it
 
+#        f2 = open('plotValues','a')
+#        f2.write(data) # python will convert \n to os.linesep
+#        f2.close() # you can omit in most cases as the destructor will call it
+
 		gr.plot(0)
-		x = x+1
 		s.close()
 	except socket.error, exc:
 		print "Caught exception socket.error : %s" % exc
