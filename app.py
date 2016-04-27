@@ -11,6 +11,10 @@ def index():
 def graph():
     return render_template('graph.html')
 
+@app.route('/graph2')
+def graph2():
+    return render_template('graph2.html')
+
 @app.route('/hello/<name>')
 def hello(name):
     return render_template('page.html', name=name)
