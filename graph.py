@@ -26,7 +26,7 @@ def plot(pollCount):
                 y.append(float(tmpStr[1]))
             except:
                 try:
-                    y.append(tmpStr[0])
+                    y.append(float(tmpStr[0]))
                 except:
                     y.append(0)
     x = []
