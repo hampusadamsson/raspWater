@@ -25,7 +25,10 @@ def plot(pollCount):
             try:
                 y.append(float(tmpStr[1]))
             except:
-                y.append(0)
+                try:
+                    y.append(tmpStr[0])
+                except:
+                    y.append(0)
     x = []
     for i in range(len(xDates)):
 	    x.append(i)
