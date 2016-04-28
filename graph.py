@@ -22,7 +22,11 @@ def plot(pollCount):
                 y.append(float(tmpStr[1]))
                 xDates.append(tmpStr[0])
             except:
-                y.append(float(tmpStr[0]))
+                try:
+                    y.append(float(tmpStr[0]))
+                except:
+                    y.append(0)
+
                 xDates.append("")
 
 
