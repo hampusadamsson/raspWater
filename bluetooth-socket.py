@@ -3,7 +3,7 @@ import time
 import matplotlib
 matplotlib.use('Agg')
 from time import gmtime, strftime
-#import graph as gr
+import graph as gr
 
 
 serverMACAddress = '20:14:10:10:21:04'
@@ -46,8 +46,8 @@ while True:
 #        f2.write(data) # python will convert \n to os.linesep
 #        f2.close() # you can omit in most cases as the destructor will call it
 
-#		gr.plot(0,0)
-#		gr.plot(0,1)
+		gr.plot(0,0)
+		gr.plot(0,1)
 		s.close()
 	except socket.error, exc:
 		print "Caught exception socket.error : %s" % exc
