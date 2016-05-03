@@ -17,11 +17,11 @@ while True:
 
 	try:
 		s.connect((serverMACAddress,port))
-		s.send('1')
+		s.send('0')
 		f = s.makefile()
 		data = str(f.readline())
 
-		print data
+		print "HS1: ",data
 		f = open('plotVal','a')
 		sendStr = ""
 		sendStr += str(strftime("%H:%M", gmtime()))
@@ -30,11 +30,24 @@ while True:
 		f.write(sendStr) # python will convert \n to os.linesep
 		f.close() # you can omit in most cases as the destructor will call it
 
+		s.send('5')
+		f = s.makefile()
+		data = str(f.readline())
+		print "HS2: ",data
+		f = open('plotVal2','a')
+		sendStr = ""
+		sendStr += str(strftime("%H:%M", gmtime()))
+		sendStr += " "
+		sendStr += str(data)
+		f.write(sendStr)
+		f.close()
+		
 #        f2 = open('plotValues','a')
 #        f2.write(data) # python will convert \n to os.linesep
 #        f2.close() # you can omit in most cases as the destructor will call it
 
-		gr.plot(0)
+		gr.plot(0,0)
+		gr.plot(0,1)
 		s.close()
 	except socket.error, exc:
 		print "Caught exception socket.error : %s" % exc
