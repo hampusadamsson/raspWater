@@ -22,7 +22,7 @@ while True:
 		data = str(f.readline())
 
 		print "HS1: ",data
-		f = open('plotVal','a')
+		f = open('plotVal1','a')
 		sendStr = ""
 		sendStr += str(strftime("%H:%M", gmtime()))
 		sendStr += " "

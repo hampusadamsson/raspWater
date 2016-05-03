@@ -6,7 +6,7 @@ def plot(pollCount, sensorNr):
     plt.ioff()
     #data = np.loadtxt('pv')
     if(sensorNr == 0):
-    	fileName = 'plotVal'
+    	fileName = 'plotVal1'
     else:
 	fileName = 'plotVal2'
 
