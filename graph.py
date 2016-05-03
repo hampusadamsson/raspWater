@@ -49,4 +49,4 @@ def plot(pollCount, sensorNr):
 #plt.show()
 
 
-plot(0,0)
+#plot(0,0)
