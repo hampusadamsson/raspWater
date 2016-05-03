@@ -3,7 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 def plot(pollCount):
-    #plt.ioff()
+    plt.ioff()
     #data = np.loadtxt('pv')
     fileName = 'plotVal'
 
@@ -37,7 +37,7 @@ def plot(pollCount):
     plt.plot(x, y,color='blue',linestyle='dotted')
     plt.xticks(x, xDates)
     plt.savefig('static/graph.png')
-    plt.show()
+    #plt.show()
 
 
 plot(0)
