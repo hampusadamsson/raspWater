@@ -42,12 +42,12 @@ def test():
 
 def writeToFileAndPlot(data, fileName):
   f = open(fileName,'a')
-	sendStr = ""
-	sendStr += str(strftime("%H:%M", gmtime()))
-	sendStr += " "
-	sendStr += str(data)
-	f.write(sendStr) # python will convert \n to os.linesep
-	f.close() # you can omit in most cases as the destructor will call it
+  sendStr = ""
+  sendStr += str(strftime("%H:%M", gmtime()))
+  sendStr += " "
+  sendStr += str(data)
+  f.write(sendStr) # python will convert \n to os.linesep
+  f.close() # you can omit in most cases as the destructor will call it
   pl.plot(0,fileName)
 
 def removeOutliers(values):
