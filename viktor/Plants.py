@@ -1,4 +1,5 @@
 import Bluetooth as bt
+import Plot as pl
 MOISTURE_1 = "0"
 TEMP = "1"
 HUMIDITY = "2"
@@ -6,33 +7,48 @@ WATER_LEVEL = "3"
 ACTIVATE_PUMP = "4"
 MOISTURE_2 = "5"
 READING_MARGIN_OF_ERROR = 15
+HIGHEST_MOISTURE_LEVEL = 70
 
 
 def test():
-  address = '20:14:10:10:21:04'
-  s = bt.connect(address)
-  data1 = []
-  for i in range(5):
-    data1.append(getMoisture1(s))
+  while True:
+    address = '20:14:10:10:21:04'
+    s = bt.connect(address)
+    data1 = []
+    for i in range(5):
+      data1.append(getMoisture1(s))
   
-  data1 = removeOutliers(data1)
-  value = calculateAvg(data1)
-  print "Moisture 1: " ,value
+    data1 = removeOutliers(data1)
+    value = calculateAvg(data1)
   
-  value2 = getTemperature(s)
-  print "Temperature: ", value2
+    writeToFileAndPlot(value,'plot')
   
-  value3 = getHumidity(s)
-  print "Humidity: ", value3
+    if(value > HIGHEST_MOISTURE_LEVEL):
+      activatePump(s)
   
-  value4 = getWaterLevel(s)
-  print "WaterLevel: ",value4
+    bt.closeSocket(s)
   
-  activatePump(s)
-  
-  bt.closeSocket(s)
+  #print "Moisture 1: " ,value
+#  value2 = getTemperature(s)
+ # print "Temperature: ", value2
+#  value3 = getHumidity(s)
+ # print "Humidity: ", value3
+#  value4 = getWaterLevel(s)
+ # print "WaterLevel: ",value4
+#  activatePump(s)
+#  bt.closeSocket(s)
   
 
+
+def writeToFileAndPlot(data, fileName):
+  f = open(fileName,'a')
+	sendStr = ""
+	sendStr += str(strftime("%H:%M", gmtime()))
+	sendStr += " "
+	sendStr += str(data)
+	f.write(sendStr) # python will convert \n to os.linesep
+	f.close() # you can omit in most cases as the destructor will call it
+  pl.plot(0,fileName)
 
 def removeOutliers(values):
   maxValue = max(values)
