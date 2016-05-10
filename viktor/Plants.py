@@ -14,24 +14,23 @@ HIGHEST_MOISTURE_LEVEL = 70
 
 
 def test():
-  while True:
-    address = '20:14:10:10:21:04'
-    s = bt.connect(address)
-    if(s != 0):
-      data1 = []
-      for i in range(5):
-        data1.append(getMoisture1(s))
-  
-      data1 = removeOutliers(data1)
-      value = calculateAvg(data1)
-      print(value)
-      writeToFileAndPlot(value,'plot')
-    
-      if(value > HIGHEST_MOISTURE_LEVEL):
-        activatePump(s)
+    while True:
+        address = '20:14:10:10:21:04'
+        s = bt.connect(address)
+        if(s != 0):
+            data1 = []
+            for i in range(5):
+                data1.append(getMoisture1(s))
 
-      bt.closeSocket(s)
-    time.sleep(20)  
+            data1 = removeOutliers(data1)
+            value = calculateAvg(data1)
+            print(value)
+            writeToFileAndPlot(value,'plot')
+
+            if(value > HIGHEST_MOISTURE_LEVEL):
+                activatePump(s)
+            bt.closeSocket(s)
+        time.sleep(20)
   #print "Moisture 1: " ,value
 #  value2 = getTemperature(s)
  # print "Temperature: ", value2
