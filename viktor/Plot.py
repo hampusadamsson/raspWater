@@ -2,14 +2,10 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.pyplot as plt2
-def plot(pollCount, sensorNr):
+def plot(pollCount, file):
     plt.ioff()
-    
+    fileName = file
     #data = np.loadtxt('pv')
-    if(sensorNr == 0):
-    	fileName = 'plotVal1'
-    else:
-	fileName = 'plotVal2'
 
     plt.title('Moisture over time')
     plt.ylabel('Soil moisture value')
