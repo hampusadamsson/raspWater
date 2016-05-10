@@ -12,7 +12,7 @@ def connect(Address):
 		
   except socket.error, exc:
 	print "Caught exception socket.error : %s" % exc
-
+        s = 0;
   return s
   
 
