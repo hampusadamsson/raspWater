@@ -8,6 +8,28 @@ MOISTURE_2 = "5"
 READING_MARGIN_OF_ERROR = 15
 
 
+def test():
+  address = '20:14:10:10:21:04'
+  s = bt.connect(address)
+  data1 = []
+  for i in range(5):
+    data1.append(getMoisture1(s))
+  
+  data1 = removeOutliers(data1)
+  value = calculateAvg(data1)
+  print "Moisture 1: " ,value)
+  
+  value2 = getTemperature(s)
+  print "Temperature: ", value2
+  
+  value3 = getHumidity(s)
+  print "Humidity: ", value3
+  
+  value4 = getWaterLevel(s)
+  print "WaterLevel: ",value4
+  
+  activatePump()
+  
 
 
 def removeOutliers(values):
@@ -82,8 +104,11 @@ def getWaterLevel(socket):
   data = bt.recieveMessage(socket)
   return data
   
-def activePump(socket):
+def activatePump(socket):
   bt.sendMessage(socket,ACTIVATE_PUMP)
   data = bt.recieveMessage(socket)
   print data
   
+
+
+test()
