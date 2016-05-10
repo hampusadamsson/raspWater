@@ -8,12 +8,12 @@ MOISTURE_2 = "5"
 
 
 
-def getHumidity1(socket):
+def getMoisture1(socket):
   bt.sendMessage(socket,MOISTURE_1)
   data = bt.recieveMessage(socket)
   return data
   
-def getHumidity2(socket):
+def getMoisture2(socket):
   bt.sendMessage(socket,MOISTURE_2)
   data = bt.recieveMessage(socket)
   return data
