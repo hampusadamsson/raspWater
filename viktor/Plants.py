@@ -1,5 +1,7 @@
 import Bluetooth as bt
 import Plot as pl
+from time import gmtime, strftime
+
 MOISTURE_1 = "0"
 TEMP = "1"
 HUMIDITY = "2"
