@@ -75,14 +75,14 @@ def removeOutliers(values):
 def calculateMedian(sortedList):
   medianBorder = (int) (len(sortedList) / 2)
   median = 0
-  if(len(values) % 2 != 0):
+  if(len(sortedList) % 2 != 0):
     medianBorder+=1
     median = sortedList[medianBorder]
   else:
     median1 = sortedList[medianBorder]
     medianBorder+=1
     median2 = sortedList[medianBorder]
-    median = (int) ((medain1 + median2)/2)
+    median = (int) ((median1 + median2)/2)
   
   return median
   
