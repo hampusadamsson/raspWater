@@ -60,7 +60,7 @@ def calculateMedian(sortedList):
   if(len(values) % 2 != 0):
     medianBorder+=1
     median = sortedList[medianBorder]
-  else
+  else:
     median1 = sortedList[medianBorder]
     medianBorder+=1
     median2 = sortedList[medianBorder]
