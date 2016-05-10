@@ -35,15 +35,11 @@ def plot(pollCount, file):
     for i in range(len(xDates)):
 	    x.append(i)
 
-    if(sensorNr == 1):
-    	plt.plot(x, y,color='blue',linestyle='dotted')
-    	plt.xticks(x, xDates)
-    	plt.savefig('static/graph.png')
+    plt.plot(x, y,color='blue',linestyle='dotted')
+    plt.xticks(x, xDates)
+    plt.savefig('../static/graph.png')
     
-    else:
-	plt2.plot(x,y,color='red',linestyle='dotted')
-	plt2.xticks(x,xDates)
-	plt2.savefig('static/graph2.png')    
+ 
 #plt.show()
 
 
