@@ -34,7 +34,7 @@ def test():
             if(value > HIGHEST_MOISTURE_LEVEL):
                 activatePump(s)
             bt.closeSocket(s)
-        time.sleep(20)
+        time.sleep(5)
   #print "Moisture 1: " ,value
 #  value2 = getTemperature(s)
  # print "Temperature: ", value2
@@ -53,6 +53,8 @@ def writeToFileAndPlot(data, fileName):
   sendStr += str(strftime("%H:%M", gmtime()))
   sendStr += " "
   sendStr += str(data)
+  sendStr += "\n"
+
   f.writelines(sendStr) # python will convert \n to os.linesep
   f.close() # you can omit in most cases as the destructor will call it
   pl.plot(0,fileName)
