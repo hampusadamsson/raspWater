@@ -30,6 +30,8 @@ def test():
   
   activatePump()
   
+  bt.closeSocket(s)
+  
 
 
 def removeOutliers(values):
