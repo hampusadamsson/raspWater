@@ -1,7 +1,11 @@
 import Bluetooth as bt
+import matplotlib
+matplotlib.use('Agg')
+
 import Plot as pl
 import time
 from time import gmtime, strftime
+
 
 MOISTURE_1 = "0"
 TEMP = "1"
