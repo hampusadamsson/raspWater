@@ -1,5 +1,6 @@
 import Bluetooth as bt
 import Plot as pl
+import time
 from time import gmtime, strftime
 
 MOISTURE_1 = "0"
@@ -16,20 +17,21 @@ def test():
   while True:
     address = '20:14:10:10:21:04'
     s = bt.connect(address)
-    data1 = []
-    for i in range(5):
-      data1.append(getMoisture1(s))
+    if(s != 0):
+      data1 = []
+      for i in range(5):
+        data1.append(getMoisture1(s))
   
-    data1 = removeOutliers(data1)
-    value = calculateAvg(data1)
-  
-    writeToFileAndPlot(value,'plot')
-  
-    if(value > HIGHEST_MOISTURE_LEVEL):
-      activatePump(s)
-  
-    bt.closeSocket(s)
-  
+      data1 = removeOutliers(data1)
+      value = calculateAvg(data1)
+    
+      writeToFileAndPlot(value,'plot')
+    
+      if(value > HIGHEST_MOISTURE_LEVEL):
+        activatePump(s)
+    
+      bt.closeSocket(s)
+    time.sleep(20)  
   #print "Moisture 1: " ,value
 #  value2 = getTemperature(s)
  # print "Temperature: ", value2
