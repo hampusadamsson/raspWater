@@ -2,26 +2,28 @@ import socket
 
 
 def connect(Address):
-  Mac = Address
-  port = 1
-  s = socket.socket(socket.AF_BLUETOOTH, socket.SOCK_STREAM, socket.BTPROTO_RFCOMM)
+    print "Connecting"
+    Mac = Address
+    port = 1
+    s = socket.socket(socket.AF_BLUETOOTH, socket.SOCK_STREAM, socket.BTPROTO_RFCOMM)
   
-  try:
-	s.connect((Mac,port))
-	print "Connected to ", Mac 
+    try:
+        s.connect((Mac,port))
+        print "Connected to", Mac
 		
-  except socket.error, exc:
-	print "Caught exception socket.error : %s" % exc
-        s = 0;
-  return s
+    except:
+        print "Caught exception socket.error"
+        s = 0
+
+    return s
   
 
 def sendMessage(socket, message):
   try:
-  	socket.send(message)
+    socket.send(message)
   	
-  except socket.error, exc:
-  	print "Caught exception socket.error : %s" % exc
+  except:
+  	print "Caught exception socket.error"
     
   
 def recieveMessage(socket):
@@ -29,19 +31,19 @@ def recieveMessage(socket):
   try:
   	f = socket.makefile()
 	data = str(f.readline())
-		
-  except socket.error, exc:
-  	print "Caught exception socket.error : %s" % exc	
-	data = "0"
-	
-  f.close()	
-  return data	
+	f.close()
+
+  except:
+    data = "0"
+    print "Caught exception socket.error"
+
+  return data
 
 def closeSocket(socket):
   try:
   	socket.close()
-        print "Socket succesfully closed"
+    #print "Socket succesfully closed"
     
-  except socket.error, exc:
-	print "Caught exception socket.error : %s" % exc	
+  except:
+	print "Caught exception socket.error"
 	

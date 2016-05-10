@@ -24,12 +24,12 @@ def test():
   
       data1 = removeOutliers(data1)
       value = calculateAvg(data1)
-    
+      print(value)
       writeToFileAndPlot(value,'plot')
     
       if(value > HIGHEST_MOISTURE_LEVEL):
         activatePump(s)
-    
+
       bt.closeSocket(s)
     time.sleep(20)  
   #print "Moisture 1: " ,value
@@ -50,7 +50,7 @@ def writeToFileAndPlot(data, fileName):
   sendStr += str(strftime("%H:%M", gmtime()))
   sendStr += " "
   sendStr += str(data)
-  f.write(sendStr) # python will convert \n to os.linesep
+  f.writelines(sendStr) # python will convert \n to os.linesep
   f.close() # you can omit in most cases as the destructor will call it
   pl.plot(0,fileName)
 
