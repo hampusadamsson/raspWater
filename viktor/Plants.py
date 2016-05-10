@@ -28,7 +28,7 @@ def test():
   value4 = getWaterLevel(s)
   print "WaterLevel: ",value4
   
-  activatePump()
+  activatePump(s)
   
   bt.closeSocket(s)
   
@@ -83,27 +83,27 @@ def calculateAvg(values):
 
 def getMoisture1(socket):
   bt.sendMessage(socket,MOISTURE_1)
-  data = bt.recieveMessage(socket)
+  data = (int)(bt.recieveMessage(socket))
   return data
   
 def getMoisture2(socket):
   bt.sendMessage(socket,MOISTURE_2)
-  data = bt.recieveMessage(socket)
+  data = (int)(bt.recieveMessage(socket))
   return data
   
 def getTemperature(socket):
   bt.sendMessage(socket,TEMP)
-  data = bt.recieveMessage(socket)
+  data = (int)(bt.recieveMessage(socket))
   return data
 
 def getHumidity(socket):
   bt.sendMessage(socket,HUMIDITY)
-  data = bt.recieveMessage(socket)
+  data = (int)(bt.recieveMessage(socket))
   return data
   
 def getWaterLevel(socket):
   bt.sendMessage(socket,WATER_LEVEL)
-  data = bt.recieveMessage(socket)
+  data = (int)(bt.recieveMessage(socket))
   return data
   
 def activatePump(socket):

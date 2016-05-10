@@ -37,7 +37,7 @@ def recieveMessage(socket):
   f.close()	
   return data	
 
-def closeSocket(socket)
+def closeSocket(socket):
   try:
   	socket.close()
         print "Socket succesfully closed"
