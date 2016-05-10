@@ -58,11 +58,11 @@ def calculateMedian(sortedList):
   medianBorder = (int) (len(sortedList) / 2)
   median = 0
   if(len(values) % 2 != 0):
-    medianBorder++
+    medianBorder+=1
     median = sortedList[medianBorder]
   else
     median1 = sortedList[medianBorder]
-    medianBorder++
+    medianBorder+=1
     median2 = sortedList[medianBorder]
     median = (int) ((medain1 + median2)/2)
   
