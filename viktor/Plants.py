@@ -14,7 +14,7 @@ WATER_LEVEL = "3"
 ACTIVATE_PUMP = "4"
 MOISTURE_2 = "5"
 READING_MARGIN_OF_ERROR = 15
-HIGHEST_MOISTURE_LEVEL = 70
+HIGHEST_MOISTURE_LEVEL = 60
 
 
 def test():
@@ -33,8 +33,9 @@ def test():
 
             if(value > HIGHEST_MOISTURE_LEVEL):
                 activatePump(s)
+                print("treshold reached")
             bt.closeSocket(s)
-        time.sleep(5)
+        time.sleep(20)
   #print "Moisture 1: " ,value
 #  value2 = getTemperature(s)
  # print "Temperature: ", value2
