@@ -18,22 +18,22 @@ def getHumidity2(socket):
   data = bt.recieveMessage(socket)
   return data
   
-def getTemperature(socket)
+def getTemperature(socket):
   bt.sendMessage(socket,TEMP)
   data = bt.recieveMessage(socket)
   return data
 
-def getHumidity(socket)
+def getHumidity(socket):
   bt.sendMessage(socket,HUMIDITY)
   data = bt.recieveMessage(socket)
   return data
   
-def getWaterLevel(socket)
+def getWaterLevel(socket):
   bt.sendMessage(socket,WATER_LEVEL)
   data = bt.recieveMessage(socket)
   return data
   
-def activePump(socket)
+def activePump(socket):
   bt.sendMessage(socket,ACTIVATE_PUMP)
   data = bt.recieveMessage(socket)
   print data
