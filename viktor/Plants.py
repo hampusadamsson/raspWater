@@ -17,7 +17,7 @@ def test():
   
   data1 = removeOutliers(data1)
   value = calculateAvg(data1)
-  print "Moisture 1: " ,value)
+  print "Moisture 1: " ,value
   
   value2 = getTemperature(s)
   print "Temperature: ", value2
