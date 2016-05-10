@@ -1,10 +1,9 @@
 
 import numpy as np
 import matplotlib.pyplot as plt
-import matplotlib.pyplot as plt2
-def plot(pollCount, file):
+def plot(pollCount, file1):
     plt.ioff()
-    fileName = file
+    fileName = file1
     #data = np.loadtxt('pv')
 
     plt.title('Moisture over time')
