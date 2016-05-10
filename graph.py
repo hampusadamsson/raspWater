@@ -1,9 +1,10 @@
 
 import numpy as np
 import matplotlib.pyplot as plt
-
+import matplotlib.pyplot as plt2
 def plot(pollCount, sensorNr):
     plt.ioff()
+    
     #data = np.loadtxt('pv')
     if(sensorNr == 0):
     	fileName = 'plotVal1'
@@ -12,6 +13,7 @@ def plot(pollCount, sensorNr):
 
     plt.title('Moisture over time')
     plt.ylabel('Soil moisture value')
+    
     #plt.xlabel('Time in ['+str(pollCount)+' min]')
 
     xDates = []
@@ -37,15 +39,15 @@ def plot(pollCount, sensorNr):
     for i in range(len(xDates)):
 	    x.append(i)
 
-    plt.plot(x, y,color='blue',linestyle='dotted')
-    plt.xticks(x, xDates)
-
-
-    if(sensorNr == 0):
+    if(sensorNr == 1):
+    	plt.plot(x, y,color='blue',linestyle='dotted')
+    	plt.xticks(x, xDates)
     	plt.savefig('static/graph.png')
     
     else:
-	plt.savefig('static/graph2.png')    
+	plt2.plot(x,y,color='red',linestyle='dotted')
+	plt2.xticks(x,xDates)
+	plt2.savefig('static/graph2.png')    
 #plt.show()
 
 
