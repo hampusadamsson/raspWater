@@ -65,7 +65,7 @@ def writeToFileAndPlot(sendStr, fileName):
   sendStr += "\n"
   f.writelines(sendStr) # python will convert \n to os.linesep
   f.close() # you can omit in most cases as the destructor will call it
-  pl.plot(0,fileName)
+  #pl.plot(0,fileName)
 
 
 def removeOutliers(values):
@@ -145,6 +145,5 @@ def activatePump(socket):
   data = bt.recieveMessage(socket)
   print data
   
-
 
 test()
