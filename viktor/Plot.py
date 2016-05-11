@@ -1,6 +1,7 @@
 
 #import numpy as np
 import matplotlib.pyplot as plt
+plt.use('Agg')
 
 MOISTURE_1 = 1
 MOISTURE_2 = 2
