@@ -5,7 +5,7 @@ matplotlib.use('Agg')
 import Plot as pl
 import time
 from time import gmtime, strftime
-
+from Plot import plotAll, plot
 
 MOISTURE_1 = "0"
 TEMP = "1"
@@ -15,10 +15,9 @@ ACTIVATE_PUMP = "4"
 MOISTURE_2 = "5"
 
 WORKING_FILE = "plot"
-POLL_INTERVAL = 5
+POLL_INTERVAL = 60
 READING_MARGIN_OF_ERROR = 15
 HIGHEST_MOISTURE_LEVEL = 120
-
 
 def test():
     while True:
@@ -52,6 +51,7 @@ def test():
             print(value)
 
             writeToFile(value,WORKING_FILE)
+            plotAll()
 
             if (moist1 > HIGHEST_MOISTURE_LEVEL) or (moist2 > HIGHEST_MOISTURE_LEVEL):
                 activatePump(s)
