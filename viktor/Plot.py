@@ -37,6 +37,6 @@ def plot(pollCount, file1, titel, yLabel, saveName):
     plt.plot(x, y,color='blue',linestyle='dotted')
     plt.xticks(x, xDates)
     plt.savefig('../static/' + saveName + '.png')
-    plt.show()
+    #plt.show()
 
-plot(0,0, 'Moisture over time', 'Soil moisture value', "grafen")
+#plot(0,0, 'Moisture over time', 'Soil moisture value', "grafen")
