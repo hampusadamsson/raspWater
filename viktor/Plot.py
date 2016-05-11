@@ -1,11 +1,16 @@
 
-import numpy as np
+#import numpy as np
 import matplotlib.pyplot as plt
 
+MOISTURE_1 = 1
+MOISTURE_2 = 2
+HUMIDITY = 3
+TEMPERATURE = 4
+#WATER = 5
 
-def plot(pollCount, file1, titel, yLabel, saveName):
-#    plt.ioff()
-    fileName = file1
+def plot(pollCount, titel, yLabel, saveName, sensorNR):
+    plt.ioff()
+    fileName = "plot"
     plt.title(titel)
     plt.ylabel(yLabel)
     
@@ -14,21 +19,27 @@ def plot(pollCount, file1, titel, yLabel, saveName):
     xDates = []
     y = []
 
+    #with open(fileName) as f:
+    #    content = f.readlines()
+    #    for row in content:
+    #        tmpStr = row.split(" ")
+    #        try:
+    #            y.append(float(tmpStr[1]))
+    #            xDates.append(tmpStr[0])
+    #        except:
+    #            try:
+    #                y.append(float(tmpStr[0]))
+    #            except:
+    #                y.append(0)
+    #
+    #            xDates.append("")
+
     with open(fileName) as f:
         content = f.readlines()
         for row in content:
             tmpStr = row.split(" ")
-            try:
-                y.append(float(tmpStr[1]))
-                xDates.append(tmpStr[0])
-            except:
-                try:
-                    y.append(float(tmpStr[0]))
-                except:
-                    y.append(0)
-
-                xDates.append("")
-
+            xDates.append(tmpStr[0])
+            y.append(float(tmpStr[sensorNR]))
 
     x = []
     for i in range(len(xDates)):
@@ -37,6 +48,14 @@ def plot(pollCount, file1, titel, yLabel, saveName):
     plt.plot(x, y,color='blue',linestyle='dotted')
     plt.xticks(x, xDates)
     plt.savefig('../static/' + saveName + '.png')
+    plt.clf()
     #plt.show()
 
-#plot(0,0, 'Moisture over time', 'Soil moisture value', "grafen")
+def plotAll():
+    import time
+    plot(0, 'Moisture sensor 1', 'Soil moisture value', "moisture_1", MOISTURE_1)
+    plot(0, 'Moisture sensor 2', 'Soil moisture value', "moisture_2", MOISTURE_2)
+    plot(0, 'Temperature', 'Celsius', "temperature", TEMPERATURE)
+    plot(0, 'Humidity', ' water vapour in the air', "humidity", HUMIDITY)
+
+plotAll()

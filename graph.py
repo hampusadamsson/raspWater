@@ -2,14 +2,16 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.pyplot as plt2
+
+
 def plot(pollCount, sensorNr):
     plt.ioff()
     
-    #data = np.loadtxt('pv')
+#    data = np.loadtxt('pv')
     if(sensorNr == 0):
     	fileName = 'plotVal1'
     else:
-	fileName = 'plotVal2'
+	    fileName = 'plotVal2'
 
     plt.title('Moisture over time')
     plt.ylabel('Soil moisture value')
@@ -48,7 +50,7 @@ def plot(pollCount, sensorNr):
 	plt2.plot(x,y,color='red',linestyle='dotted')
 	plt2.xticks(x,xDates)
 	plt2.savefig('static/graph2.png')    
-#plt.show()
+plt.show()
 
 
-#plot(0,0)
+plot(0,0)
