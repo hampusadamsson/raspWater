@@ -5,28 +5,40 @@ import time
 MAC = '20:14:10:10:21:04'
 port = 1
 s = socket.socket(socket.AF_BLUETOOTH, socket.SOCK_STREAM, socket.BTPROTO_RFCOMM)
-s.connect((MAC,port))
+connected = 0
+
+while connected==0:
+	try:
+		s.connect((MAC,port))
+		connected = 1
+	except:
+		print "cant connect"
+		time.sleep(1)
 
 while True:
-	#s = socket.socket(socket.AF_BLUETOOTH, socket.SOCK_STREAM, socket.BTPROTO_RFCOMM)
-	#s.connect((MAC,port))
 	try:
-		#s.connect((MAC,port))
-		var = raw_input("Enter a number ")
+		print("0 - read moisture (sensor1)")
+		print("1 - read temerature")
+		print("2 - read humidity")
+		print("3 - read water sensor")
+		print("4 - activate pump")
+		print("5 - read moisture (sensor2)")
+		print("e - EXIT")
+
+		var = raw_input("Action(0-5): ")
+
 		print "You entered ", var
 		if(var == "E") or (var == "e"):
 			print "Exiting... "
 			s.close
 			break
-
 		s.send(var)
 		f = s.makefile()
 		data = str(f.readline())
-		
-		print data
 		f.close()
-		#s.close
-	except socket.error, exc:
-		print "Error"
+		print data
+	except:
+		print("Error")
+		s.close()
 	time.sleep (2)
 	

@@ -1,13 +1,13 @@
 
 import numpy as np
 import matplotlib.pyplot as plt
-def plot(pollCount, file1):
-    plt.ioff()
-    fileName = file1
-    #data = np.loadtxt('pv')
 
-    plt.title('Moisture over time')
-    plt.ylabel('Soil moisture value')
+
+def plot(pollCount, file1, titel, yLabel, saveName):
+#    plt.ioff()
+    fileName = file1
+    plt.title(titel)
+    plt.ylabel(yLabel)
     
     #plt.xlabel('Time in ['+str(pollCount)+' min]')
 
@@ -32,14 +32,11 @@ def plot(pollCount, file1):
 
     x = []
     for i in range(len(xDates)):
-	    x.append(i)
+        x.append(i)
 
     plt.plot(x, y,color='blue',linestyle='dotted')
     plt.xticks(x, xDates)
-    plt.savefig('../static/graph.png')
-    
- 
-#plt.show()
+    plt.savefig('../static/' + saveName + '.png')
+    plt.show()
 
-
-#plot(0,0)
+plot(0,0, 'Moisture over time', 'Soil moisture value', "grafen")

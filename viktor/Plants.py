@@ -13,52 +13,60 @@ HUMIDITY = "2"
 WATER_LEVEL = "3"
 ACTIVATE_PUMP = "4"
 MOISTURE_2 = "5"
+
+WORKING_FILE = "plot"
+POLL_INTERVAL = 5
 READING_MARGIN_OF_ERROR = 15
-HIGHEST_MOISTURE_LEVEL = 60
+HIGHEST_MOISTURE_LEVEL = 120
 
 
 def test():
     while True:
         address = '20:14:10:10:21:04'
-        s = bt.connect(address)
+        try:
+            s = bt.connect(address)
+        except:
+            print "Bluetooth unable to connect"
+
         if(s != 0):
             data1 = []
+            data2 = []
             for i in range(5):
                 data1.append(getMoisture1(s))
-
+                data2.append(getMoisture2(s))
             data1 = removeOutliers(data1)
-            value = calculateAvg(data1)
+            data2 = removeOutliers(data2)
+
+            moist1 = str(calculateAvg(data1)) + " "
+            moist2 = str(calculateAvg(data2)) + " "
+            humid = str(getHumidity(s)) + " "
+            temp = str(getTemperature(s)) + " "
+            tiden = str(strftime("%H:%M", gmtime())) + " "
+
+            value = tiden + moist1 + moist2 + humid + temp
+
+            print("moist1: " + moist1)
+            print("moist2: " + moist2)
+            print("temp: " + temp)
+            print("humid: " + humid)
             print(value)
-            writeToFileAndPlot(value,'plot')
 
-            if(value > HIGHEST_MOISTURE_LEVEL):
+            writeToFileAndPlot(value,WORKING_FILE)
+
+            if (moist1 > HIGHEST_MOISTURE_LEVEL) or (moist2 > HIGHEST_MOISTURE_LEVEL):
                 activatePump(s)
-                print("treshold reached")
+                print("Threshold reached")
             bt.closeSocket(s)
-        time.sleep(20)
-  #print "Moisture 1: " ,value
-#  value2 = getTemperature(s)
- # print "Temperature: ", value2
-#  value3 = getHumidity(s)
- # print "Humidity: ", value3
-#  value4 = getWaterLevel(s)
- # print "WaterLevel: ",value4
-#  activatePump(s)
-#  bt.closeSocket(s)
-  
+        time.sleep(POLL_INTERVAL)
 
 
-def writeToFileAndPlot(data, fileName):
+def writeToFileAndPlot(sendStr, fileName):
   f = open(fileName,'a')
-  sendStr = ""
-  sendStr += str(strftime("%H:%M", gmtime()))
-  sendStr += " "
-  sendStr += str(data)
   sendStr += "\n"
-
   f.writelines(sendStr) # python will convert \n to os.linesep
   f.close() # you can omit in most cases as the destructor will call it
   pl.plot(0,fileName)
+
 
 def removeOutliers(values):
   maxValue = max(values)
