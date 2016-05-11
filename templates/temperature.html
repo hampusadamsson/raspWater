@@ -1,9 +1,6 @@
-<!DOCTYPE html>
 <html>
-<head>
+<head>  
 <style>
-body {margin:0;}
-
 ul {
     list-style-type: none;
     margin: 0;
@@ -14,11 +11,9 @@ ul {
     top: 0;
     width: 100%;
 }
-
 li {
     float: left;
 }
-
 li a {
     display: block;
     color: white;
@@ -26,30 +21,30 @@ li a {
     padding: 14px 16px;
     text-decoration: none;
 }
-
 li a:hover:not(.active) {
     background-color: #111;
 }
-
 .active {
     background-color: #4CAF50;
 }
 </style>
 </head>
+
+
 <body bgcolor="#59a659">
 
 <ul>
-  <li><a class="active" href="/">Home</a></li>
+  <li><a href="/">Home</a></li>
   <li><a href="moisture_1">moisture1</a></li>
   <li><a href="moisture_2">moisture2</a></li>
   <li><a href="humidity">Humidity</a></li>
-  <li><a href="temperature">Temperature</a></li>
+  <li><a class="active" href="temperature">Temperature</a></li>
   <li><a href="#about">About</a></li>
-</ul>
-
+</ul>  
+ 
 <div style="padding:20px;margin-top:30px;height:1500px;" align="middle">
-<h1>Welcome</h1>
-<img src="/static/greenhouse.png" align="middle">
+<h1>Graph</h1>
+<img src="/static/temperature.png?xxx=987878787" border="5" align="middle">
 </div>
 
 
