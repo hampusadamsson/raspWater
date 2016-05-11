@@ -37,13 +37,13 @@ def test():
             data1 = removeOutliers(data1)
             data2 = removeOutliers(data2)
 
-            moist1 = str(calculateAvg(data1)) + " "
-            moist2 = str(calculateAvg(data2)) + " "
+            moist1 = calculateAvg(data1)
+            moist2 = calculateAvg(data2)
             humid = str(getHumidity(s)) + " "
             temp = str(getTemperature(s)) + " "
             tiden = str(strftime("%H:%M", gmtime())) + " "
 
-            value = tiden + moist1 + moist2 + humid + temp
+            value = tiden + str(moist1) + " " + str(moist2) + " " + humid + temp
 
             print("moist1: " + moist1)
             print("moist2: " + moist2)
@@ -51,7 +51,7 @@ def test():
             print("humid: " + humid)
             print(value)
 
-            writeToFileAndPlot(value,WORKING_FILE)
+            writeToFile(value,WORKING_FILE)
 
             if (moist1 > HIGHEST_MOISTURE_LEVEL) or (moist2 > HIGHEST_MOISTURE_LEVEL):
                 activatePump(s)
@@ -60,7 +60,11 @@ def test():
         time.sleep(POLL_INTERVAL)
 
 
-def writeToFileAndPlot(sendStr, fileName):
+def plotPic():
+    print "implement this func"
+
+
+def writeToFile(sendStr, fileName):
   f = open(fileName,'a')
   sendStr += "\n"
   f.writelines(sendStr) # python will convert \n to os.linesep
