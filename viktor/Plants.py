@@ -45,8 +45,8 @@ def test():
 
             value = tiden + str(moist1) + " " + str(moist2) + " " + humid + temp
 
-            print("moist1: " + moist1)
-            print("moist2: " + moist2)
+            print("moist1: " + str(moist1))
+            print("moist2: " + str(moist2))
             print("temp: " + temp)
             print("humid: " + humid)
             print(value)
