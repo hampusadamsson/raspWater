@@ -54,11 +54,27 @@ def test():
             plotAll()
 
             if (moist1 > HIGHEST_MOISTURE_LEVEL) or (moist2 > HIGHEST_MOISTURE_LEVEL):
-                activatePump(s)
+                waterPlants(s,2)
                 print("Threshold reached")
             bt.closeSocket(s)
         time.sleep(POLL_INTERVAL)
 
+
+def waterPlants(socket, sensorFlag):
+  threshold = HIGHEST_MOISTURE_LEVEL
+  while(threshold > LOWEST_MOISTURE_LEVEL):
+      activatePump(socket)
+      data1=[]
+      for i in range(5):
+	  if(sensorFlag == 1){
+	     data1.append(getMoisture1(socket))
+	  }
+	  else{
+	     data1.append(getMoisture2(socket))
+	  }
+      data1 = removeOutliers(data1)
+      threshold = calculateAvg(data1)
+      time.sleep(60)
 
 def plotPic():
     print "implement this func"
